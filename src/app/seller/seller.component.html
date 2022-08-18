@@ -1,0 +1,232 @@
+
+<div class="banner">
+<h1  style="color:indigo; font-size: 4rem;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Easy Housing</h1>
+<div class="row">
+  <div class="col-md-5">
+    <form  autocomplete="off" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <table text="center" width="205%" cellpadding="30" cellspacing="0">
+      <tr>
+   <td>
+        <!-- Seller Id  -->
+
+<div class="mb-2">
+
+  <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal"
+  for="id">Seller Id :</label>
+  <input type="text"  style="width: 15%" style="font-size: 20px" name="sellerid" class="form-control"
+[(ngModel)]="sellerservice.sellerData.sellerid" #sellerid="ngModel" autocomplete="off" required
+[class.is-invalid]="sellerid.touched && sellerid.invalid" placeholder="Enter Seller Id">
+</div>
+
+<!--Validation-->
+<div class="text-danger" *ngIf="sellerid.errors && (sellerid.dirty || sellerid.touched)">
+<p *ngIf="sellerid.errors?.['required']">Seller ID is mandatory</p>
+ </div>
+</td>
+
+<td>
+<!--Seller Name  -->
+<div class="mb-2">
+<label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal"
+>Seller Name :</label>
+
+<input type="text"  style="width:15%" style="font-size: 20px" name="sellername" class="form-control"
+[(ngModel)]="sellerservice.sellerData.sellername" #sellername="ngModel" autocomplete="off" required maxlength="5"
+[class.is-invalid]="sellername.invalid && sellername.touched" placeholder="Enter Seller Name">
+</div>
+<!-- validation-->
+<div class="text-danger" *ngIf="sellername.errors && (sellername.dirty || sellername.touched)">
+<p *ngIf="sellername.errors?.['required']">Seller Name is mandatory</p>
+ <p *ngIf="sellername.errors?.['maxlength']">Seller Name must be minimum of 5 characters</p>
+</div>
+</td>
+</tr>
+<!-------------------------------------------------------------------------------------------------->
+<tr>
+  <td>
+    <!--Seller MobieNo  -->
+    <div class="mb-2">
+    <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+      Seller Mobile :</label>
+    <input type="text" style="width:15%" style="font-size: 20px" name="sellermobileno" class="form-control"
+    [(ngModel)]="sellerservice.sellerData.sellermobileno" #sellermobileno="ngModel" autocomplete="off" required minlength="10"
+    [class.is-invalid]="sellermobileno.invalid && sellermobileno.touched" placeholder="Enter your Mobile Number">
+    </div>
+    <!-- validation  -->
+    <div class="text-danger" *ngIf="sellermobileno.errors && (sellermobileno.dirty || sellermobileno.touched)">
+    <p *ngIf="sellermobileno.errors?.['required']">Mobile Number is mandatory</p>
+    <p *ngIf="sellermobileno.errors?.['minlength']">Seller Mobile Number must be minimum of 10 digits</p>
+    </div>
+    </td>
+<td>
+<!-- Property Type  -->
+   <div class="mb-2">
+    <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+      Property Type :</label>
+    <select id="propertytype" style="width:15%" style="font-size: 20px" class="form-control" name="propertytype"
+    [(ngModel)]="sellerservice.sellerData.propertytype" #propertytype="ngModel"
+    [class.is-invalid]="propertytype.invalid && propertytype.touched" >
+      <option value="">--Select--</option>
+
+      <option value="1">Gated Community</option>
+
+      <option value="2">Villa</option>
+
+      <option value="3">Bunglaow</option>
+      <option value="3">Appartment</option>
+
+
+      </select>
+
+    <!--input type="text" name="sellermobileno" class="form-control"
+    [(ngModel)]="sellerservice.sellerData.propertytype" #propertytype="ngModel" autocomplete="off"-->
+    <!--select name="demo" id="#">
+      <option selected="selected" value="one">Option 1</option>
+      <option value="two">Option 2</option>
+      <option value="three">Option 3</option>
+      Option</select-->
+    <!--div mdbDropdown class="dropdown">
+      <button
+        class="btn btn-primary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        aria-expanded="false"
+        mdbDropdownToggle>Property Type</button>
+      <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#">Gated Community</a></li>
+        <li><a class="dropdown-item" href="#">Villa</a></li>
+        <li><a class="dropdown-item" href="#">Bunglaow</a></li>
+        <li><a class="dropdown-item" href="#">Appartment</a></li>
+      </ul>
+    </div-->
+   </div>
+   </td>
+</tr>
+<!------------------------------------------------------------------------------------------------->
+<tr>
+<td>
+ <!-- Property Name  -->
+<div class="mb-2">
+  <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+    Property Name :</label>
+  <input type="text" style="width:15%" style="font-size: 20px" name="propertyname" class="form-control"
+    [(ngModel)]="sellerservice.sellerData.propertyname" #propertyname="ngModel" required
+    [class.is-invalid]="propertyname.invalid && propertyname.touched" placeholder="Enter Property Name">
+</div>
+<!-- validation  -->
+<div class="text-danger" *ngIf="propertyname.errors && (propertyname.dirty || propertyname.touched)">
+  <p *ngIf="propertyname.errors?.['required']">Property Name is mandatory</p>
+  </div>
+</td>
+
+<td>
+<!-- Description  -->
+<div class="mb-2">
+  <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+    Description :</label>
+  <input type="text" style="width:15%" style="font-size: 20px" name="description" class="form-control"
+    [(ngModel)]="sellerservice.sellerData.description" #description="ngModel" required maxlength="70"
+    [class.is-invalid]="description.invalid && description.touched" placeholder="Enter Description">
+</div>
+<!-- validation  -->
+<div class="text-danger" *ngIf="description.errors && (description.dirty || description.touched)">
+  <p *ngIf="address.errors?.['required']">Description is mandatory</p>
+   <p *ngIf="description.errors?.['maxlength']">Description must be maximum of 70 characters</p>
+  </div>
+</td>
+</tr>
+<!----------------------------------------------------------------------------------------------->
+<tr>
+  <td>
+<!-- Address  -->
+<div class="mb-2">
+  <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+    Address :</label>
+  <input type="text" style="width:15%" style="font-size: 20px" name="address" class="form-control"
+    [(ngModel)]="sellerservice.sellerData.address" #address="ngModel" required maxlength="50"
+    [class.is-invalid]="address.invalid && address.touched" placeholder="Enter your Address">
+</div>
+<!-- validation  -->
+<div class="text-danger" *ngIf="address.errors && (address.dirty || address.touched)">
+  <p *ngIf="address.errors?.['required']">Address is mandatory</p>
+   <p *ngIf="address.errors?.['maxlength']">Address must be maximum of 50 characters</p>
+  </div>
+  </td>
+
+  <td>
+<!-- Price  -->
+<div class="mb-2">
+  <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+    Price :</label>
+  <input type="text" style="width:15%" style="font-size: 20px" name="price" class="form-control"
+    [(ngModel)]="sellerservice.sellerData.price" #price="ngModel" required
+    [class.is-invalid]="price.invalid && price.touched" placeholder="Enter Price">
+</div>
+<!-- validation  -->
+<div class="text-danger"  *ngIf="price.errors && (price.dirty || price.touched)">
+  <p *ngIf="price.errors?.['required']">Price is mandatory</p>
+  </div>
+  </td>
+</tr>
+<!----------------------------------------------------------------------------------------------->
+<tr>
+  <td>
+<!-- Property Region  -->
+<div class="mb-2">
+  <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+    Property Region :</label>
+  <select id="propertyregion" style="width:15%" style="font-size: 20px" class="form-control" name="propertyregion"
+  [(ngModel)]="sellerservice.sellerData.propertyregion" #propertyregion="ngModel"
+  [class.is-invalid]="propertyregion.invalid && propertyregion.touched" >
+    <option value="">--Select--</option>
+
+    <option value="1">Banglore</option>
+
+    <option value="2">Mumbai</option>
+
+    <option value="3">Chennai</option>
+    <option value="3">Hyderabad</option>
+
+
+    </select>
+ </div>
+  </td>
+
+  <td>
+<!-- Property Option  -->
+<div class="mb-2">
+  <label style="color:black ;font-family:verdana;font-size:18px;font-weight:normal">
+    Property Option :</label>
+  <select id="propertyoption" style="width:15%" style="font-size: 20px" class="form-control" name="propertyoption"
+  [(ngModel)]="sellerservice.sellerData.propertyoption" #propertyoption="ngModel"
+  [class.is-invalid]="propertyoption.invalid && propertyoption.touched" >
+
+    <option value="">--Select--</option>
+
+    <option value="1">Rent</option>
+
+    <option value="2">Sell</option>
+
+
+
+    </select>
+ </div>
+  </td>
+</tr>
+<!----------------------------------------------------------------------------------------------->
+<tr>
+<td>
+<div class="mb-2">
+<button  type="submit" [disabled]="myForm.invalid" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onclick="alert('Successfully added your details.You will shortly receive an email.')">Submit</button>
+
+<button type="reset" class="btn btn-danger mx-2">Reset</button>
+</div>
+</td>
+</tr>
+</table>
+</form>
+</div>
+</div>
+</div>
+
+
